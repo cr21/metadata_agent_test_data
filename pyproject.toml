@@ -1,0 +1,14 @@
+[project]
+name = "metadata_agent_test_data"
+version = "0.1.0"
+description = "test data for metadata-agent "
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "apache-beam[gcp]>=2.70.0",
+    "fastmcp>=3.2.4",
+    "google-cloud-bigquery>=3.41.0",
+    "google-cloud-dataplex>=2.19.0",
+    "openpyxl>=3.1.5",
+    "sqlglot>=30.7.0",
+]
