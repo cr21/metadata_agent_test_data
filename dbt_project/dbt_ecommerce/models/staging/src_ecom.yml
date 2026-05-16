@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: raw_ecommerce
+    database: raw_prod
+    schema: public
+    tables:
+      - name: users
+        description: "Raw user registration data from the production app database."
+        columns:
+          - name: id
+            data_type: integer
+            tests:
+              - unique
+              - not_null
+          - name: email
+            data_type: string
+          - name: created_at
+            data_type: timestamp
+
+models:
+  - name: stg_users
+    description: "Cleaned and filtered staging model for user data."
+    columns:
+      - name: user_id
+        description: "Primary key for users, renamed from raw ID."
+        tests:
+          - unique
+          - not_null
+      - name: is_active
+        description: "Boolean flag indicating if the user account is active."

@@ -1,0 +1,23 @@
+version: 2
+
+sources:
+  - name: ad_platform
+    database: raw_marketing
+    schema: public
+    tables:
+      - name: ad_clicks
+        description: "Raw clickstream data from ad platforms (Google, LinkedIn, etc.)"
+        columns:
+          - name: click_id
+            tests: [unique, not_null]
+          - name: utm_source
+            description: "The source of the traffic"
+
+models:
+  - name: stg_ad_clicks
+    description: "Cleaned click events with normalized UTM parameters."
+    columns:
+      - name: click_id
+        tests: [unique, not_null]
+      - name: user_id
+        description: "Unique identifier for the visitor."
